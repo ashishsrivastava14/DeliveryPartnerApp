@@ -90,20 +90,20 @@ class RoleSelectorScreen extends StatelessWidget {
                 },
               ),
               const Spacer(),
-              TextButton(
-                onPressed: () {
-                  authController.logout();
-                  context.go('/login');
-                },
-                child: Text(
-                  'Logout',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 14,
-                    color: AppColors.error,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+              // TextButton(
+              //   onPressed: () {
+              //     authController.logout();
+              //     context.go('/login');
+              //   },
+              //   child: Text(
+              //     'Logout',
+              //     style: GoogleFonts.dmSans(
+              //       fontSize: 14,
+              //       color: AppColors.error,
+              //       fontWeight: FontWeight.w600,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
