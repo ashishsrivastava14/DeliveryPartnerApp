@@ -28,11 +28,7 @@ class PartnerHomeScreen extends StatelessWidget {
                 flexibleSpace: FlexibleSpaceBar(
                   background: Container(
                     decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [AppColors.primary, AppColors.primaryDark],
-                      ),
+                      gradient: AppGradients.header,
                     ),
                     child: SafeArea(
                       child: Padding(

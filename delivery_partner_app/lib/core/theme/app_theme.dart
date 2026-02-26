@@ -2,26 +2,80 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF1A6B3C);
-  static const Color primaryLight = Color(0xFF2E8B57);
-  static const Color primaryDark = Color(0xFF0F4D2A);
+  // Primary palette — deep purple/indigo from delivery_bg.png
+  static const Color primary = Color(0xFF2D1B69);
+  static const Color primaryLight = Color(0xFF6B4FA0);
+  static const Color primaryDark = Color(0xFF1A1145);
+
+  // Accent — warm amber/orange streaks from the image
   static const Color accent = Color(0xFFF5A623);
   static const Color accentLight = Color(0xFFFFBF47);
-  static const Color backgroundLight = Color(0xFFF8F9FA);
-  static const Color backgroundDark = Color(0xFF0D1117);
+
+  // Backgrounds
+  static const Color backgroundLight = Color(0xFFF5F0FF);
+  static const Color backgroundDark = Color(0xFF0D0B1A);
   static const Color surface = Colors.white;
-  static const Color surfaceDark = Color(0xFF161B22);
-  static const Color cardDark = Color(0xFF21262D);
+  static const Color surfaceDark = Color(0xFF1A1535);
+  static const Color cardDark = Color(0xFF221D3A);
+
+  // Text
   static const Color textPrimary = Color(0xFF1A1A2E);
   static const Color textSecondary = Color(0xFF6B7280);
   static const Color textLight = Colors.white;
+
+  // Status
   static const Color success = Color(0xFF22C55E);
   static const Color error = Color(0xFFEF4444);
   static const Color warning = Color(0xFFF59E0B);
-  static const Color info = Color(0xFF3B82F6);
+  static const Color info = Color(0xFF00BFFF);
+
+  // Misc
   static const Color divider = Color(0xFFE5E7EB);
   static const Color shimmerBase = Color(0xFFE0E0E0);
   static const Color shimmerHighlight = Color(0xFFF5F5F5);
+
+  // Sunset pink tones from the image sky
+  static const Color sunsetPink = Color(0xFFC47AB0);
+  static const Color sunsetSoftPink = Color(0xFFE8A0C0);
+
+  // Cyan network nodes from the image
+  static const Color cyan = Color(0xFF00D4FF);
+}
+
+/// Gradient presets matching the delivery_bg.png color palette
+class AppGradients {
+  /// Main vertical gradient: deep navy-purple → sunset pink (top-to-bottom)
+  static const LinearGradient primary = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      AppColors.primaryDark,
+      AppColors.primary,
+      AppColors.primaryLight,
+      AppColors.sunsetPink,
+    ],
+  );
+
+  /// Horizontal header gradient for app bars / banners
+  static const LinearGradient header = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [AppColors.primary, AppColors.primaryDark],
+  );
+
+  /// Card / subtle background gradient
+  static const LinearGradient card = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [AppColors.primaryLight, AppColors.primary],
+  );
+
+  /// Dark admin gradient
+  static const LinearGradient dark = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [AppColors.surfaceDark, AppColors.backgroundDark],
+  );
 }
 
 class AppTheme {

@@ -45,9 +45,16 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
       body: Stack(
         children: [
+          // Gradient background matching delivery_bg.png
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: AppGradients.primary,
+              ),
+            ),
+          ),
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(

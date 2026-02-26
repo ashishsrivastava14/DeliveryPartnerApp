@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
 import '../../controllers/auth_controller.dart';
 
+
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
@@ -14,14 +15,21 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
       body: Stack(
         fit: StackFit.expand,
         children: [
+          // Gradient background matching delivery_bg.png
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: AppGradients.primary,
+              ),
+            ),
+          ),
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(
-              opacity: 0.1,
+              opacity: 0.12,
               child: Image.asset(
                 'assets/images/delivery_bg.png',
                 fit: BoxFit.cover,
@@ -54,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -64,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                   'Login to start delivering',
                   style: GoogleFonts.dmSans(
                     fontSize: 16,
-                    color: AppColors.textSecondary,
+                    color: Colors.white70,
                   ),
                 ),
               ),
@@ -75,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                 style: GoogleFonts.dmSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 8),
@@ -138,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                       style: GoogleFonts.dmSans(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -203,7 +211,7 @@ class LoginScreen extends StatelessWidget {
                         child: Text(
                           'Resend OTP',
                           style: GoogleFonts.dmSans(
-                            color: AppColors.primary,
+                            color: AppColors.accentLight,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
