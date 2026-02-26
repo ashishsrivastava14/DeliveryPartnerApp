@@ -42,7 +42,7 @@ class RoleSelectorScreen extends StatelessWidget {
                 iconWidget: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
-                    'assets/images/logo.png',
+                    'assets/images/logo_final.png',
                     width: 32,
                     height: 32,
                     fit: BoxFit.cover,
