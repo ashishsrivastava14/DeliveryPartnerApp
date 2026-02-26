@@ -13,8 +13,28 @@ class RoleSelectorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
-      body: SafeArea(
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Gradient background
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: AppGradients.primary,
+              ),
+            ),
+          ),
+          // Background image with low opacity
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.65,
+              child: Image.asset(
+                'assets/images/delivery_logo.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -25,7 +45,7 @@ class RoleSelectorScreen extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textPrimary,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 8),
@@ -33,7 +53,7 @@ class RoleSelectorScreen extends StatelessWidget {
                 'Select how you want to use the app',
                 style: GoogleFonts.dmSans(
                   fontSize: 16,
-                  color: AppColors.textSecondary,
+                  color: Colors.white70,
                 ),
               ),
               const SizedBox(height: 48),
@@ -86,6 +106,8 @@ class RoleSelectorScreen extends StatelessWidget {
             ],
           ),
         ),
+          ),
+        ],
       ),
     );
   }
