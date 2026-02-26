@@ -15,8 +15,21 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Background image with low opacity
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.1,
+              child: Image.asset(
+                'assets/images/delivery_bg.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SafeArea(
+            child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,7 +214,9 @@ class LoginScreen extends StatelessWidget {
               }),
             ],
           ),
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
