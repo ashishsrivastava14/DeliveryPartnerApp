@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(
-              opacity: 0.15,
+              opacity: 0.65,
               child: Image.asset(
                 'assets/images/delivery_logo.png',
                 fit: BoxFit.cover,
