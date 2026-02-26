@@ -372,16 +372,12 @@ class _PartnerAvatar extends StatelessWidget {
     final fontSize = size * 0.38;
     if (partner.profileImage.isNotEmpty) {
       return ClipOval(
-        child: Image.network(
+        child: Image.asset(
           partner.profileImage,
           width: size,
           height: size,
           fit: BoxFit.cover,
-          loadingBuilder: (context, child, progress) {
-            if (progress == null) return child;
-            return _Placeholder(name: partner.name, size: size, fontSize: fontSize);
-          },
-          errorBuilder: (context, _, __) =>
+          errorBuilder: (context, _, _) =>
               _Placeholder(name: partner.name, size: size, fontSize: fontSize),
         ),
       );

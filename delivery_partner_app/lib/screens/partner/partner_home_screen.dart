@@ -835,7 +835,7 @@ class _PulsingDotState extends State<_PulsingDot>
           // Expanding ring
           AnimatedBuilder(
             animation: _ctrl,
-            builder: (_, __) => Transform.scale(
+            builder: (_, _) => Transform.scale(
               scale: _scale.value,
               child: Container(
                 width: 14,

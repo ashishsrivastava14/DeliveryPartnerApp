@@ -48,7 +48,7 @@ class MockPartners {
       rating: 4.8,
       totalEarnings: 185000,
       joinDate: '2024-03-15',
-      profileImage: 'https://i.pravatar.cc/150?img=12',
+      profileImage: 'assets/images/partners/dp_001_amit.jpg',
     ),
     MockPartner(
       id: 'DP-002',
@@ -64,7 +64,7 @@ class MockPartners {
       rating: 4.6,
       totalEarnings: 142000,
       joinDate: '2024-05-20',
-      profileImage: 'https://i.pravatar.cc/150?img=15',
+      profileImage: 'assets/images/partners/dp_002_rajesh.jpg',
     ),
     MockPartner(
       id: 'DP-003',
@@ -80,7 +80,7 @@ class MockPartners {
       rating: 4.3,
       totalEarnings: 67500,
       joinDate: '2024-08-10',
-      profileImage: 'https://i.pravatar.cc/150?img=17',
+      profileImage: 'assets/images/partners/dp_003_suresh.jpg',
     ),
     MockPartner(
       id: 'DP-004',
@@ -96,7 +96,7 @@ class MockPartners {
       rating: 0.0,
       totalEarnings: 0,
       joinDate: '2025-02-01',
-      profileImage: 'https://i.pravatar.cc/150?img=22',
+      profileImage: 'assets/images/partners/dp_004_vikram.jpg',
     ),
     MockPartner(
       id: 'DP-005',
@@ -112,7 +112,7 @@ class MockPartners {
       rating: 3.2,
       totalEarnings: 48000,
       joinDate: '2024-06-15',
-      profileImage: 'https://i.pravatar.cc/150?img=33',
+      profileImage: 'assets/images/partners/dp_005_deepak.jpg',
     ),
     MockPartner(
       id: 'DP-006',
@@ -128,7 +128,7 @@ class MockPartners {
       rating: 4.9,
       totalEarnings: 315000,
       joinDate: '2023-11-20',
-      profileImage: 'https://i.pravatar.cc/150?img=53',
+      profileImage: 'assets/images/partners/dp_006_manoj.jpg',
     ),
     MockPartner(
       id: 'DP-007',
@@ -144,7 +144,7 @@ class MockPartners {
       rating: 4.5,
       totalEarnings: 117000,
       joinDate: '2024-04-10',
-      profileImage: 'https://i.pravatar.cc/150?img=57',
+      profileImage: 'assets/images/partners/dp_007_pradeep.jpg',
     ),
     MockPartner(
       id: 'DP-008',
@@ -160,7 +160,7 @@ class MockPartners {
       rating: 0.0,
       totalEarnings: 0,
       joinDate: '2025-02-15',
-      profileImage: 'https://i.pravatar.cc/150?img=60',
+      profileImage: 'assets/images/partners/dp_008_ravi.jpg',
     ),
   ];
 
