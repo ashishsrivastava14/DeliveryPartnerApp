@@ -48,6 +48,7 @@ class MockPartners {
       rating: 4.8,
       totalEarnings: 185000,
       joinDate: '2024-03-15',
+      profileImage: 'https://i.pravatar.cc/150?img=12',
     ),
     MockPartner(
       id: 'DP-002',
@@ -63,6 +64,7 @@ class MockPartners {
       rating: 4.6,
       totalEarnings: 142000,
       joinDate: '2024-05-20',
+      profileImage: 'https://i.pravatar.cc/150?img=15',
     ),
     MockPartner(
       id: 'DP-003',
@@ -78,6 +80,7 @@ class MockPartners {
       rating: 4.3,
       totalEarnings: 67500,
       joinDate: '2024-08-10',
+      profileImage: 'https://i.pravatar.cc/150?img=17',
     ),
     MockPartner(
       id: 'DP-004',
@@ -93,6 +96,7 @@ class MockPartners {
       rating: 0.0,
       totalEarnings: 0,
       joinDate: '2025-02-01',
+      profileImage: 'https://i.pravatar.cc/150?img=22',
     ),
     MockPartner(
       id: 'DP-005',
@@ -108,6 +112,7 @@ class MockPartners {
       rating: 3.2,
       totalEarnings: 48000,
       joinDate: '2024-06-15',
+      profileImage: 'https://i.pravatar.cc/150?img=33',
     ),
     MockPartner(
       id: 'DP-006',
@@ -123,6 +128,7 @@ class MockPartners {
       rating: 4.9,
       totalEarnings: 315000,
       joinDate: '2023-11-20',
+      profileImage: 'https://i.pravatar.cc/150?img=53',
     ),
     MockPartner(
       id: 'DP-007',
@@ -138,6 +144,7 @@ class MockPartners {
       rating: 4.5,
       totalEarnings: 117000,
       joinDate: '2024-04-10',
+      profileImage: 'https://i.pravatar.cc/150?img=57',
     ),
     MockPartner(
       id: 'DP-008',
@@ -153,6 +160,7 @@ class MockPartners {
       rating: 0.0,
       totalEarnings: 0,
       joinDate: '2025-02-15',
+      profileImage: 'https://i.pravatar.cc/150?img=60',
     ),
   ];
 

@@ -73,24 +73,7 @@ class AdminPartnersScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(14),
                         child: Row(
                           children: [
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: AppColors.primary.withValues(alpha: 0.2),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  partner.name[0],
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primary,
-                                  ),
-                                ),
-                              ),
-                            ),
+                            _PartnerAvatar(partner: partner, size: 48),
                             const SizedBox(width: 12),
                             Expanded(
                               child: Column(
@@ -178,17 +161,7 @@ class AdminPartnersScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Row(
                 children: [
-                  Container(
-                    width: 60, height: 60,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary.withValues(alpha: 0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(partner.name[0],
-                          style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.primary)),
-                    ),
-                  ),
+                  _PartnerAvatar(partner: partner, size: 60),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
@@ -383,6 +356,64 @@ class _DetailRow extends StatelessWidget {
           Text(label, style: GoogleFonts.dmSans(fontSize: 14, color: Colors.white54)),
           Text(value, style: GoogleFonts.dmSans(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white)),
         ],
+      ),
+    );
+  }
+}
+
+class _PartnerAvatar extends StatelessWidget {
+  final MockPartner partner;
+  final double size;
+
+  const _PartnerAvatar({required this.partner, required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    final fontSize = size * 0.38;
+    if (partner.profileImage.isNotEmpty) {
+      return ClipOval(
+        child: Image.network(
+          partner.profileImage,
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          loadingBuilder: (context, child, progress) {
+            if (progress == null) return child;
+            return _Placeholder(name: partner.name, size: size, fontSize: fontSize);
+          },
+          errorBuilder: (context, _, __) =>
+              _Placeholder(name: partner.name, size: size, fontSize: fontSize),
+        ),
+      );
+    }
+    return _Placeholder(name: partner.name, size: size, fontSize: fontSize);
+  }
+}
+
+class _Placeholder extends StatelessWidget {
+  final String name;
+  final double size;
+  final double fontSize;
+
+  const _Placeholder({required this.name, required this.size, required this.fontSize});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: AppColors.primary.withValues(alpha: 0.2),
+        shape: BoxShape.circle,
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        name[0],
+        style: GoogleFonts.poppins(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: AppColors.primary,
+        ),
       ),
     );
   }
