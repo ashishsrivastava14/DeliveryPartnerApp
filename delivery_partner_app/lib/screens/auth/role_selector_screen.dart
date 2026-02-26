@@ -39,7 +39,15 @@ class RoleSelectorScreen extends StatelessWidget {
               const SizedBox(height: 48),
               // Delivery Partner Card
               _RoleCard(
-                icon: Icons.delivery_dining,
+                iconWidget: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 32,
+                    height: 32,
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 title: 'Delivery Partner',
                 subtitle: 'Accept orders, deliver packages & earn money',
                 color: AppColors.primary,
@@ -84,14 +92,16 @@ class RoleSelectorScreen extends StatelessWidget {
 }
 
 class _RoleCard extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final Widget? iconWidget;
   final String title;
   final String subtitle;
   final Color color;
   final VoidCallback onTap;
 
   const _RoleCard({
-    required this.icon,
+    this.icon,
+    this.iconWidget,
     required this.title,
     required this.subtitle,
     required this.color,
@@ -127,7 +137,7 @@ class _RoleCard extends StatelessWidget {
                 color: color.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Icon(icon, size: 32, color: color),
+              child: iconWidget ?? Icon(icon, size: 32, color: color),
             ),
             const SizedBox(width: 16),
             Expanded(

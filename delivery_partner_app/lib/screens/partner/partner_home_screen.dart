@@ -524,7 +524,10 @@ class _EmptyActiveOrder extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Icon(Icons.delivery_dining, size: 48, color: AppColors.primary.withValues(alpha: 0.3)),
+            Opacity(
+              opacity: 0.5,
+              child: Image.asset('assets/images/logo.png', width: 48, height: 48),
+            ),
             const SizedBox(height: 12),
             Text(
               'No Active Orders',
