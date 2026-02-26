@@ -18,7 +18,7 @@ class EarningsScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 200,
+            expandedHeight: 260,
             pinned: true,
             automaticallyImplyLeading: false,
             backgroundColor: AppColors.primary,
