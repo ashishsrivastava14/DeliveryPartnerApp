@@ -16,7 +16,21 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(
-        title: Obx(() => Text(controller.stepTitle)),
+        title: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/images/logo_final.png',
+                width: 32,
+                height: 32,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Obx(() => Text(controller.stepTitle)),
+          ],
+        ),
         leading: Obx(() => controller.currentStep.value > 0
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),

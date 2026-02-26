@@ -17,7 +17,21 @@ class AdminDashboardScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Admin Dashboard', style: GoogleFonts.poppins(fontSize: 18)),
+        title: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/images/logo_final.png',
+                width: 32,
+                height: 32,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text('Admin Dashboard', style: GoogleFonts.poppins(fontSize: 18)),
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
