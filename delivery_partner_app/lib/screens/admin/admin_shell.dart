@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/theme/app_theme.dart';
 import '../../controllers/admin_controller.dart';
+import '../../core/widgets/common_widgets.dart';
 import 'admin_dashboard_screen.dart';
 import 'admin_partners_screen.dart';
 import 'admin_orders_screen.dart';
@@ -86,7 +87,11 @@ class AdminShell extends StatelessWidget {
             )),
         bottomNavigationBar: isWide
             ? null
-            : Obx(() => BottomNavigationBar(
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const PoweredByQuickPrepAI(light: true),
+                  Obx(() => BottomNavigationBar(
                   currentIndex: controller.selectedNavIndex.value.clamp(0, 4),
                   onTap: (i) => controller.selectedNavIndex.value = i,
                   backgroundColor: AppColors.surfaceDark,
@@ -101,6 +106,8 @@ class AdminShell extends StatelessWidget {
                     BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: 'More'),
                   ],
                 )),
+                ],
+              ),
       ),
     );
   }

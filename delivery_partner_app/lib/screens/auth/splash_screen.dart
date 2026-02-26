@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -129,6 +129,13 @@ class _SplashScreenState extends State<SplashScreen>
                 );
               },
             ),
+          ),
+          // Powered by footer
+          const Positioned(
+            left: 0,
+            right: 0,
+            bottom: 24,
+            child: Center(child: PoweredByQuickPrepAI(light: true)),
           ),
         ],
       ),

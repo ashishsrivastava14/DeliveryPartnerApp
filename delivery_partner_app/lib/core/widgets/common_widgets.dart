@@ -1,5 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
+
+/// "Powered by QuickPrepAI" footer widget shown app-wide.
+class PoweredByQuickPrepAI extends StatelessWidget {
+  /// Use [light] for dark backgrounds (white text), dark for light backgrounds.
+  final bool light;
+
+  const PoweredByQuickPrepAI({super.key, this.light = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Powered by ',
+            style: GoogleFonts.dmSans(
+              fontSize: 11,
+              color: light ? Colors.white54 : AppColors.textSecondary,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image.asset(
+              'assets/images/QuickPrepAI_logo.png',
+              height: 16,
+              fit: BoxFit.contain,
+            ),
+          ),
+          const SizedBox(width: 4),
+          // Text(
+          //   'QuickPrepAI',
+          //   style: GoogleFonts.poppins(
+          //     fontSize: 11,
+          //     fontWeight: FontWeight.w600,
+          //     color: light ? Colors.white70 : AppColors.textPrimary,
+          //   ),
+          // ),
+        ],
+      ),
+    );
+  }
+}
 
 class AppWidgets {
   static Widget shimmerLoading({

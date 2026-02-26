@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
 import '../../controllers/auth_controller.dart';
+import '../../core/widgets/common_widgets.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -223,6 +224,13 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
             ),
+          ),
+          // Powered by footer
+          const Positioned(
+            left: 0,
+            right: 0,
+            bottom: 16,
+            child: Center(child: PoweredByQuickPrepAI(light: true)),
           ),
         ],
       ),

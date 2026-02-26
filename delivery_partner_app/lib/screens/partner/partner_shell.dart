@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import '../../controllers/partner_home_controller.dart';
+import '../../core/widgets/common_widgets.dart';
 
 class PartnerShell extends StatelessWidget {
   final Widget child;
@@ -14,7 +15,11 @@ class PartnerShell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
-      bottomNavigationBar: Obx(() => BottomNavigationBar(
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const PoweredByQuickPrepAI(),
+          Obx(() => BottomNavigationBar(
             currentIndex: controller.bottomNavIndex.value,
             onTap: (index) {
               controller.bottomNavIndex.value = index;
@@ -56,6 +61,8 @@ class PartnerShell extends StatelessWidget {
               ),
             ],
           )),
+        ],
+      ),
     );
   }
 }
