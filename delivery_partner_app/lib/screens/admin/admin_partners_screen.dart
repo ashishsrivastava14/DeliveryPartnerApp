@@ -28,15 +28,18 @@ class AdminPartnersScreen extends StatelessWidget {
             color: AppColors.surfaceDark,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Obx(() => Row(
-                    children: [
-                      _FilterChip('All', 'all', controller),
-                      _FilterChip('Active', 'active', controller),
-                      _FilterChip('Inactive', 'inactive', controller),
-                      _FilterChip('Pending', 'pending', controller),
-                      _FilterChip('Suspended', 'suspended', controller),
-                    ],
-                  )),
+              child: Obx(() {
+                final currentFilter = controller.partnerFilter.value;
+                return Row(
+                  children: [
+                    _FilterChip('All', 'all', currentFilter, controller),
+                    _FilterChip('Active', 'active', currentFilter, controller),
+                    _FilterChip('Inactive', 'inactive', currentFilter, controller),
+                    _FilterChip('Pending', 'pending', currentFilter, controller),
+                    _FilterChip('Suspended', 'suspended', currentFilter, controller),
+                  ],
+                );
+              }),
             ),
           ),
           Expanded(
@@ -275,13 +278,14 @@ class AdminPartnersScreen extends StatelessWidget {
 class _FilterChip extends StatelessWidget {
   final String label;
   final String value;
+  final String currentFilter;
   final AdminController controller;
 
-  const _FilterChip(this.label, this.value, this.controller);
+  const _FilterChip(this.label, this.value, this.currentFilter, this.controller);
 
   @override
   Widget build(BuildContext context) {
-    final selected = controller.partnerFilter.value == value;
+    final selected = currentFilter == value;
     return GestureDetector(
       onTap: () => controller.setPartnerFilter(value),
       child: Container(
