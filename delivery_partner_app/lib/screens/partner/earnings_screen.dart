@@ -89,11 +89,23 @@ class EarningsScreen extends StatelessWidget {
                   // Tab selector
                   Obx(() => Row(
                         children: [
-                          _TabChip('Breakdown', 0, selectedTab),
+                          _TabChip(
+                            label: 'Breakdown',
+                            selected: selectedTab.value == 0,
+                            onTap: () => selectedTab.value = 0,
+                          ),
                           const SizedBox(width: 8),
-                          _TabChip('Incentives', 1, selectedTab),
+                          _TabChip(
+                            label: 'Incentives',
+                            selected: selectedTab.value == 1,
+                            onTap: () => selectedTab.value = 1,
+                          ),
                           const SizedBox(width: 8),
-                          _TabChip('Transactions', 2, selectedTab),
+                          _TabChip(
+                            label: 'Transactions',
+                            selected: selectedTab.value == 2,
+                            onTap: () => selectedTab.value = 2,
+                          ),
                         ],
                       )),
                   const SizedBox(height: 16),
@@ -255,16 +267,15 @@ class _EarningStat extends StatelessWidget {
 
 class _TabChip extends StatelessWidget {
   final String label;
-  final int index;
-  final RxInt selectedTab;
+  final bool selected;
+  final VoidCallback onTap;
 
-  const _TabChip(this.label, this.index, this.selectedTab);
+  const _TabChip({required this.label, required this.selected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final selected = selectedTab.value == index;
     return GestureDetector(
-      onTap: () => selectedTab.value = index,
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(

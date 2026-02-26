@@ -36,7 +36,7 @@ class RoleSelectorScreen extends StatelessWidget {
             ),
           ),
           SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
@@ -89,21 +89,6 @@ class RoleSelectorScreen extends StatelessWidget {
                   context.go('/admin/dashboard');
                 },
               ),
-              const Spacer(),
-              // TextButton(
-              //   onPressed: () {
-              //     authController.logout();
-              //     context.go('/login');
-              //   },
-              //   child: Text(
-              //     'Logout',
-              //     style: GoogleFonts.dmSans(
-              //       fontSize: 14,
-              //       color: AppColors.error,
-              //       fontWeight: FontWeight.w600,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
