@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 import '../../mock/mock_partners.dart';
 
@@ -18,7 +19,8 @@ class AdminPartnersScreen extends StatelessWidget {
         backgroundColor: AppColors.surfaceDark,
         title: Text('Partner Management', style: GoogleFonts.poppins(fontSize: 18)),
       ),
-      body: Column(
+      body: AppBackground(
+        child: Column(
         children: [
           // Filters
           Container(
@@ -137,6 +139,7 @@ class AdminPartnersScreen extends StatelessWidget {
             }),
           ),
         ],
+      ),
       ),
     );
   }

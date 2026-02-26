@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 
 class AdminSettingsScreen extends StatelessWidget {
@@ -17,7 +18,8 @@ class AdminSettingsScreen extends StatelessWidget {
         backgroundColor: AppColors.surfaceDark,
         title: Text('Settings', style: GoogleFonts.poppins(fontSize: 18)),
       ),
-      body: SingleChildScrollView(
+      body: AppBackground(
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,6 +246,7 @@ class AdminSettingsScreen extends StatelessWidget {
             const SizedBox(height: 32),
           ],
         ),
+      ),
       ),
     );
   }

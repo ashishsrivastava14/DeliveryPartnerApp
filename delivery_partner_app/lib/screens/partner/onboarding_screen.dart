@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/onboarding_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -23,7 +24,8 @@ class OnboardingScreen extends StatelessWidget {
               )
             : const SizedBox()),
       ),
-      body: Column(
+      body: AppBackground(
+        child: Column(
         children: [
           // Progress indicator
           Obx(() => Padding(
@@ -74,6 +76,7 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

@@ -47,6 +47,32 @@ class PoweredByQuickPrepAI extends StatelessWidget {
   }
 }
 
+/// Reusable background wrapper that layers `bg_withoutlogo.png` at low opacity
+/// behind any child widget.
+class AppBackground extends StatelessWidget {
+  final Widget child;
+  const AppBackground({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Positioned.fill(
+          child: Opacity(
+            opacity: 0.15,
+            child: Image.asset(
+              'assets/images/bg_withoutlogo.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        child,
+      ],
+    );
+  }
+}
+
 class AppWidgets {
   static Widget shimmerLoading({
     double width = double.infinity,

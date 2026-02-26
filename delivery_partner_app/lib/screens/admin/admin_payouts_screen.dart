@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 import '../../mock/mock_earnings.dart';
 
@@ -18,7 +19,8 @@ class AdminPayoutsScreen extends StatelessWidget {
         backgroundColor: AppColors.surfaceDark,
         title: Text('Earnings & Payouts', style: GoogleFonts.poppins(fontSize: 18)),
       ),
-      body: SingleChildScrollView(
+      body: AppBackground(
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,6 +160,7 @@ class AdminPayoutsScreen extends StatelessWidget {
                 )),
           ],
         ),
+      ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 
 class AdminZonesScreen extends StatelessWidget {
@@ -23,7 +24,8 @@ class AdminZonesScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Obx(() => ListView.builder(
+      body: AppBackground(
+        child: Obx(() => ListView.builder(
             padding: const EdgeInsets.all(12),
             itemCount: controller.zones.length,
             itemBuilder: (context, index) {
@@ -74,6 +76,7 @@ class AdminZonesScreen extends StatelessWidget {
               );
             },
           )),
+      ),
     );
   }
 

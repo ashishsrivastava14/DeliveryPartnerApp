@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -24,7 +25,8 @@ class AdminDashboardScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: AppBackground(
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,6 +260,7 @@ class AdminDashboardScreen extends StatelessWidget {
             const SizedBox(height: 24),
           ],
         ),
+      ),
       ),
     );
   }

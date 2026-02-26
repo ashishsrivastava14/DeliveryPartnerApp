@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/admin_controller.dart';
 import '../../mock/mock_orders.dart';
 
@@ -18,7 +19,8 @@ class AdminOrdersScreen extends StatelessWidget {
         backgroundColor: AppColors.surfaceDark,
         title: Text('Order Management', style: GoogleFonts.poppins(fontSize: 18)),
       ),
-      body: ListView.builder(
+      body: AppBackground(
+        child: ListView.builder(
         padding: const EdgeInsets.all(12),
         itemCount: controller.allOrders.length,
         itemBuilder: (context, index) {
@@ -84,6 +86,7 @@ class AdminOrdersScreen extends StatelessWidget {
             ),
           );
         },
+      ),
       ),
     );
   }

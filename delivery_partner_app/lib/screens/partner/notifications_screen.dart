@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../mock/mock_notifications.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -11,7 +12,8 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
       appBar: AppBar(title: const Text('Notifications')),
-      body: MockNotifications.allNotifications.isEmpty
+      body: AppBackground(
+        child: MockNotifications.allNotifications.isEmpty
           ? Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -82,6 +84,7 @@ class NotificationsScreen extends StatelessWidget {
                 );
               },
             ),
+      ),
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/onboarding_controller.dart';
 
@@ -32,7 +33,8 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: AppBackground(
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
@@ -163,6 +165,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 80),
           ],
         ),
+      ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/partner_home_controller.dart';
 
 class ActiveOrderScreen extends StatelessWidget {
@@ -22,7 +23,8 @@ class ActiveOrderScreen extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
       ),
-      body: Obx(() {
+      body: AppBackground(
+        child: Obx(() {
         if (controller.isOrderCompleted.value) {
           return _OrderCompletedView(controller: controller);
         }
@@ -263,6 +265,7 @@ class ActiveOrderScreen extends StatelessWidget {
           ],
         );
       }),
+      ),
     );
   }
 

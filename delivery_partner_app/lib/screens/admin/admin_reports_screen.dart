@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../mock/mock_orders.dart';
 
 class AdminReportsScreen extends StatefulWidget {
@@ -30,7 +31,8 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> {
         backgroundColor: AppColors.surfaceDark,
         title: Text('Reports & Analytics', style: GoogleFonts.poppins(fontSize: 18)),
       ),
-      body: SingleChildScrollView(
+      body: AppBackground(
+        child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,6 +266,7 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> {
             ],
           ],
         ),
+      ),
       ),
     );
   }

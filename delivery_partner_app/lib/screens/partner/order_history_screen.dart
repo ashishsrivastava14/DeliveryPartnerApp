@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/partner_home_controller.dart';
 import '../../mock/mock_orders.dart';
 
@@ -32,12 +33,14 @@ class OrderHistoryScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: AppBackground(
+          child: TabBarView(
           children: [
             _OrderList(orders: controller.todayOrders),
             _OrderList(orders: controller.weekOrders),
             _OrderList(orders: controller.allOrders),
           ],
+        ),
         ),
       ),
     );

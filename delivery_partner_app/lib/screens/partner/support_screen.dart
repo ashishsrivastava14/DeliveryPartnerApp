@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -25,12 +26,14 @@ class SupportScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: AppBackground(
+          child: TabBarView(
           children: [
             _FaqsTab(),
             _RaiseTicketTab(),
             _LiveChatTab(),
           ],
+        ),
         ),
       ),
     );

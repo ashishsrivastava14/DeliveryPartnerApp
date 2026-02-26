@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/partner_home_controller.dart';
 import '../../mock/mock_earnings.dart';
 
@@ -15,7 +16,8 @@ class EarningsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: CustomScrollView(
+      body: AppBackground(
+        child: CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 260,
@@ -167,6 +169,7 @@ class EarningsScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

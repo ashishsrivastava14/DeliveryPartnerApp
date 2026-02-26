@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/widgets/common_widgets.dart';
 import '../../controllers/partner_home_controller.dart';
 import 'new_order_alert.dart';
 
@@ -15,7 +16,8 @@ class PartnerHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundLight,
-      body: Stack(
+      body: AppBackground(
+        child: Stack(
         children: [
           CustomScrollView(
             slivers: [
@@ -353,6 +355,7 @@ class PartnerHomeScreen extends StatelessWidget {
             return const SizedBox();
           }),
         ],
+      ),
       ),
     );
   }
