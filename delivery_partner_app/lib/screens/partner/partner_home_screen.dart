@@ -128,50 +128,147 @@ class PartnerHomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Online/Offline Toggle
-                      Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Obx(() => Text(
-                                        controller.isOnline.value
-                                            ? 'You are Online'
-                                            : 'You are Offline',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )),
-                                  Obx(() => Text(
-                                        controller.isOnline.value
-                                            ? 'Accepting new orders'
-                                            : 'Go online to receive orders',
-                                        style: GoogleFonts.dmSans(
-                                          fontSize: 13,
-                                          color: AppColors.textSecondary,
-                                        ),
-                                      )),
-                                ],
+                      // Online/Offline Toggle – enhanced
+                      Obx(() {
+                        final isOnline = controller.isOnline.value;
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeInOut,
+                          decoration: BoxDecoration(
+                            gradient: isOnline
+                                ? const LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      Color(0xFF0D9F6E),
+                                      Color(0xFF059669),
+                                      Color(0xFF047857),
+                                    ],
+                                  )
+                                : const LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      Color(0xFF374151),
+                                      Color(0xFF1F2937),
+                                      Color(0xFF111827),
+                                    ],
+                                  ),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: isOnline
+                                    ? const Color(0xFF059669).withValues(alpha: 0.4)
+                                    : Colors.black26,
+                                blurRadius: isOnline ? 18 : 8,
+                                offset: const Offset(0, 6),
                               ),
-                              Obx(() => AnimatedSwitcher(
-                                    duration: const Duration(milliseconds: 300),
-                                    child: Switch(
-                                      key: ValueKey(controller.isOnline.value),
-                                      value: controller.isOnline.value,
-                                      onChanged: (_) => controller.toggleOnline(),
-                                      activeThumbColor: AppColors.primary,
-                                      activeTrackColor: AppColors.primary.withValues(alpha: 0.3),
-                                    ),
-                                  )),
                             ],
                           ),
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 18),
+                          child: Row(
+                            children: [
+                              // Pulsing dot indicator
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 400),
+                                width: 48,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: isOnline
+                                      ? Colors.white.withValues(alpha: 0.2)
+                                      : Colors.white.withValues(alpha: 0.08),
+                                ),
+                                child: Center(
+                                  child: isOnline
+                                      ? _PulsingDot(color: Colors.white)
+                                      : Container(
+                                          width: 14,
+                                          height: 14,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.grey.shade400,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                              const SizedBox(width: 14),
+                              // Status text
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      isOnline
+                                          ? 'You are Online'
+                                          : 'You are Offline',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                        letterSpacing: 0.3,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Row(
+                                      children: [
+                                        if (isOnline)
+                                          Container(
+                                            margin:
+                                                const EdgeInsets.only(right: 6),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 2),
+                                            decoration: BoxDecoration(
+                                              color: Colors.white
+                                                  .withValues(alpha: 0.2),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Text(
+                                              'LIVE',
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.white,
+                                                letterSpacing: 1.2,
+                                              ),
+                                            ),
+                                          ),
+                                        Text(
+                                          isOnline
+                                              ? 'Accepting new orders'
+                                              : 'Go online to receive orders',
+                                          style: GoogleFonts.dmSans(
+                                            fontSize: 13,
+                                            color: Colors.white
+                                                .withValues(alpha: 0.8),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Toggle switch
+                              Transform.scale(
+                                scale: 1.15,
+                                child: Switch(
+                                  value: isOnline,
+                                  onChanged: (_) =>
+                                      controller.toggleOnline(),
+                                  activeThumbColor: Colors.white,
+                                  activeTrackColor:
+                                      Colors.white.withValues(alpha: 0.35),
+                                  inactiveThumbColor: Colors.grey.shade300,
+                                  inactiveTrackColor:
+                                      Colors.white.withValues(alpha: 0.12),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
                       const SizedBox(height: 16),
 
                       // Today's Stats
@@ -579,6 +676,87 @@ class _QuickAction extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Animated pulsing green/white dot to indicate live online status.
+class _PulsingDot extends StatefulWidget {
+  final Color color;
+  const _PulsingDot({required this.color});
+
+  @override
+  State<_PulsingDot> createState() => _PulsingDotState();
+}
+
+class _PulsingDotState extends State<_PulsingDot>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  late Animation<double> _scale;
+  late Animation<double> _opacity;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    )..repeat();
+    _scale = Tween(begin: 1.0, end: 2.4).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeOut),
+    );
+    _opacity = Tween(begin: 0.6, end: 0.0).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.easeOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 28,
+      height: 28,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // Expanding ring
+          AnimatedBuilder(
+            animation: _ctrl,
+            builder: (_, __) => Transform.scale(
+              scale: _scale.value,
+              child: Container(
+                width: 14,
+                height: 14,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: widget.color.withValues(alpha: _opacity.value),
+                ),
+              ),
+            ),
+          ),
+          // Solid inner dot
+          Container(
+            width: 14,
+            height: 14,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: widget.color,
+              boxShadow: [
+                BoxShadow(
+                  color: widget.color.withValues(alpha: 0.5),
+                  blurRadius: 8,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
