@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                   ),
                 ),
               ),
@@ -76,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                   'Login to start delivering',
                   style: GoogleFonts.dmSans(
                     fontSize: 16,
-                    color: Colors.white70,
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -87,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                 style: GoogleFonts.dmSans(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                 ),
               ),
               const SizedBox(height: 8),
@@ -150,7 +150,7 @@ class LoginScreen extends StatelessWidget {
                       style: GoogleFonts.dmSans(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: AppColors.textPrimary,
                       ),
                     ),
                     const SizedBox(height: 8),

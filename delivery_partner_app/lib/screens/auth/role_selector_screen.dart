@@ -49,7 +49,7 @@ class RoleSelectorScreen extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                 ),
               ),
               const SizedBox(height: 8),
@@ -57,7 +57,7 @@ class RoleSelectorScreen extends StatelessWidget {
                 'Select how you want to use the app',
                 style: GoogleFonts.dmSans(
                   fontSize: 16,
-                  color: Colors.white70,
+                  color: AppColors.textSecondary,
                 ),
               ),
               const SizedBox(height: 48),
