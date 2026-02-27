@@ -49,9 +49,12 @@ class _SplashScreenState extends State<SplashScreen>
         children: [
           // Gradient background matching delivery_bg.png
           Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: AppGradients.primary,
+            child: Opacity(
+              opacity: 0.2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: AppGradients.primary,
+                ),
               ),
             ),
           ),
@@ -76,27 +79,15 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Container(
-                          width: 140,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.2),
-                                blurRadius: 20,
-                                offset: const Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          // child: ClipRRect(
-                          //   borderRadius: BorderRadius.circular(30),
-                          //   child: Image.asset(
-                          //     'assets/images/logo_m.png',
-                          //     fit: BoxFit.cover,
-                          //   ),
-                          // ),
-                        ),
+                        // ClipRRect(
+                        //   borderRadius: BorderRadius.circular(30),
+                        //   child: Image.asset(
+                        //     'assets/images/logo_m.png',
+                        //     width: 140,
+                        //     height: 140,
+                        //     fit: BoxFit.cover,
+                        //   ),
+                        // ),
                         // const SizedBox(height: 24),
                         // Text(
                         //   'DeliveryPartner',
