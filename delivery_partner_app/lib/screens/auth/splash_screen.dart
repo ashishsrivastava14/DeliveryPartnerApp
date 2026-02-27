@@ -48,20 +48,20 @@ class _SplashScreenState extends State<SplashScreen>
       body: Stack(
         children: [
           // Gradient background matching delivery_bg.png
-          Positioned.fill(
-            child: Opacity(
-              opacity: 0.2,
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: AppGradients.primary,
-                ),
-              ),
-            ),
-          ),
+          // Positioned.fill(
+          //   child: Opacity(
+          //     opacity: 0.02,
+          //     child: Container(
+          //       decoration: const BoxDecoration(
+          //         gradient: AppGradients.primary,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(
-              opacity: 0.65,
+              opacity: 0.95,
               child: Image.asset(
                 'assets/images/background.png',
                 fit: BoxFit.cover,

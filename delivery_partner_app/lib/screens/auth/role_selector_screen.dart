@@ -31,7 +31,7 @@ class RoleSelectorScreen extends StatelessWidget {
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(
-              opacity: 0.65,
+              opacity: 0.95,
               child: Image.asset(
                 'assets/images/background.png',
                 fit: BoxFit.cover,
