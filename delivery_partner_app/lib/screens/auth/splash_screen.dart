@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Opacity(
               opacity: 0.65,
               child: Image.asset(
-                'assets/images/delivery_logo.png',
+                'assets/images/background.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -92,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen>
                           // child: ClipRRect(
                           //   borderRadius: BorderRadius.circular(30),
                           //   child: Image.asset(
-                          //     'assets/images/logo_final.png',
+                          //     'assets/images/logo_m.png',
                           //     fit: BoxFit.cover,
                           //   ),
                           // ),

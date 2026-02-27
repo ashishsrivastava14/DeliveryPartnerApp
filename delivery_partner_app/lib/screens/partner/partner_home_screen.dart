@@ -47,7 +47,7 @@ class PartnerHomeScreen extends StatelessWidget {
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(8),
                                         child: Image.asset(
-                                          'assets/images/logo_final.png',
+                                          'assets/images/logo_m.png',
                                           width: 48,
                                           height: 48,
                                           fit: BoxFit.cover,

@@ -22,7 +22,7 @@ class ActiveOrderScreen extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                'assets/images/logo_final.png',
+                'assets/images/logo_m.png',
                 width: 32,
                 height: 32,
                 fit: BoxFit.cover,

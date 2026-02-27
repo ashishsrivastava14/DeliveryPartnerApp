@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
             child: Opacity(
               opacity: 0.12,
               child: Image.asset(
-                'assets/images/delivery_logo.png',
+                'assets/images/background.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    'assets/images/logo_final.png',
+                    'assets/images/logo_m.png',
                     width: 100,
                     height: 100,
                     fit: BoxFit.cover,
