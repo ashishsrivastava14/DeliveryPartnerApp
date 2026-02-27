@@ -44,15 +44,15 @@ class AppColors {
 
 /// Gradient presets matching the delivery_bg.png color palette
 class AppGradients {
-  /// Main vertical gradient: deep navy-purple → sunset pink (top-to-bottom)
+  /// Main vertical gradient: light blue gradient (top-to-bottom)
   static const LinearGradient primary = LinearGradient(
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
     colors: [
-      AppColors.primaryDark,
-      AppColors.primary,
-      AppColors.primaryLight,
-      AppColors.sunsetPink,
+      Color(0xFF87CEEB),
+      Color(0xFF5DADE2),
+      Color(0xFF3498DB),
+      Color(0xFF2E86C1),
     ],
   );
 

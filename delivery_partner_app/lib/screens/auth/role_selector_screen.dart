@@ -19,9 +19,12 @@ class RoleSelectorScreen extends StatelessWidget {
         children: [
           // Gradient background
           Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: AppGradients.primary,
+            child: Opacity(
+              opacity: 0.2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: AppGradients.primary,
+                ),
               ),
             ),
           ),

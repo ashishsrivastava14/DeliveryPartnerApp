@@ -21,16 +21,19 @@ class LoginScreen extends StatelessWidget {
         children: [
           // Gradient background matching delivery_bg.png
           Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: AppGradients.primary,
+            child: Opacity(
+              opacity: 0.2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: AppGradients.primary,
+                ),
               ),
             ),
           ),
           // Background image with low opacity
           Positioned.fill(
             child: Opacity(
-              opacity: 0.12,
+              opacity: 0.62,
               child: Image.asset(
                 'assets/images/background.png',
                 fit: BoxFit.cover,
