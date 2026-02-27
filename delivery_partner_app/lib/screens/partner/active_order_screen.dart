@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart' as latlng;
 import '../../core/theme/app_theme.dart';
 import '../../core/widgets/common_widgets.dart';
 import '../../controllers/partner_home_controller.dart';
@@ -103,87 +105,19 @@ class ActiveOrderScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Mock Map
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            AppColors.primary.withValues(alpha: 0.1),
-                            AppColors.info.withValues(alpha: 0.1),
-                          ],
+                    // Google Map
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: SizedBox(
+                        height: 200,
+                        width: double.infinity,
+                        child: _OrderMapWidget(
+                          storeLat: order.storeLat,
+                          storeLng: order.storeLng,
+                          customerLat: order.customerLat,
+                          customerLng: order.customerLng,
+                          distanceText: '${order.distance} km • ~15 min',
                         ),
-                        border: Border.all(color: AppColors.divider),
-                      ),
-                      child: Stack(
-                        children: [
-                          // Grid lines
-                          ...List.generate(8, (i) => Positioned(
-                            left: 0,
-                            right: 0,
-                            top: i * 25.0 + 10,
-                            child: Container(height: 0.5, color: AppColors.divider),
-                          )),
-                          ...List.generate(12, (i) => Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: i * 30.0 + 10,
-                            child: Container(width: 0.5, color: AppColors.divider),
-                          )),
-                          // Route line
-                          CustomPaint(
-                            size: const Size(double.infinity, 200),
-                            painter: _RoutePainter(),
-                          ),
-                          // Store marker
-                          Positioned(
-                            left: 40,
-                            top: 60,
-                            child: _MapMarker(
-                              icon: Icons.store,
-                              color: AppColors.primary,
-                              label: 'Store',
-                            ),
-                          ),
-                          // Customer marker
-                          Positioned(
-                            right: 40,
-                            bottom: 40,
-                            child: _MapMarker(
-                              icon: Icons.person_pin,
-                              color: AppColors.error,
-                              label: 'Customer',
-                            ),
-                          ),
-                          // Center label
-                          Center(
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
-                                    blurRadius: 8,
-                                  ),
-                                ],
-                              ),
-                              child: Text(
-                                '${order.distance} km • ~15 min',
-                                style: GoogleFonts.dmSans(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.primary,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -579,12 +513,123 @@ class _DetailRow extends StatelessWidget {
   }
 }
 
-class _MapMarker extends StatelessWidget {
+class _OrderMapWidget extends StatelessWidget {
+  final double storeLat;
+  final double storeLng;
+  final double customerLat;
+  final double customerLng;
+  final String distanceText;
+
+  const _OrderMapWidget({
+    required this.storeLat,
+    required this.storeLng,
+    required this.customerLat,
+    required this.customerLng,
+    required this.distanceText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final storePoint = latlng.LatLng(storeLat, storeLng);
+    final customerPoint = latlng.LatLng(customerLat, customerLng);
+    final centerLat = (storeLat + customerLat) / 2;
+    final centerLng = (storeLng + customerLng) / 2;
+
+    return Stack(
+      children: [
+        FlutterMap(
+          options: MapOptions(
+            initialCenter: latlng.LatLng(centerLat, centerLng),
+            initialZoom: 12,
+            interactionOptions: const InteractionOptions(
+              flags: InteractiveFlag.none,
+            ),
+          ),
+          children: [
+            TileLayer(
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              userAgentPackageName: 'com.zeptpartner.delivery_partner_app',
+            ),
+            PolylineLayer(
+              polylines: [
+                Polyline(
+                  points: [storePoint, customerPoint],
+                  color: AppColors.primary,
+                  strokeWidth: 4,
+                  pattern: StrokePattern.dashed(segments: const [20, 10]),
+                ),
+              ],
+            ),
+            MarkerLayer(
+              markers: [
+                Marker(
+                  point: storePoint,
+                  width: 44,
+                  height: 44,
+                  child: _MapPin(
+                    icon: Icons.store,
+                    color: AppColors.primary,
+                    label: 'Store',
+                  ),
+                ),
+                Marker(
+                  point: customerPoint,
+                  width: 44,
+                  height: 44,
+                  child: _MapPin(
+                    icon: Icons.person_pin,
+                    color: AppColors.error,
+                    label: 'Customer',
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        // Distance badge overlay
+        Positioned(
+          bottom: 8,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.15),
+                    blurRadius: 8,
+                  ),
+                ],
+              ),
+              child: Text(
+                distanceText,
+                style: GoogleFonts.dmSans(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.primary,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _MapPin extends StatelessWidget {
   final IconData icon;
   final Color color;
   final String label;
 
-  const _MapMarker({required this.icon, required this.color, required this.label});
+  const _MapPin({
+    required this.icon,
+    required this.color,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -592,56 +637,24 @@ class _MapMarker extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: const EdgeInsets.all(6),
+          padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             color: color,
             shape: BoxShape.circle,
-            boxShadow: [BoxShadow(color: color.withValues(alpha: 0.3), blurRadius: 8)],
+            boxShadow: [BoxShadow(color: color.withValues(alpha: 0.4), blurRadius: 6)],
           ),
-          child: Icon(icon, size: 16, color: Colors.white),
+          child: Icon(icon, size: 14, color: Colors.white),
         ),
-        const SizedBox(height: 2),
-        Text(label, style: GoogleFonts.dmSans(fontSize: 10, fontWeight: FontWeight.w600)),
+        Text(
+          label,
+          style: GoogleFonts.dmSans(
+            fontSize: 9,
+            fontWeight: FontWeight.w700,
+            color: color,
+            shadows: [Shadow(color: Colors.white, blurRadius: 4)],
+          ),
+        ),
       ],
     );
   }
-}
-
-class _RoutePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.primary
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3
-      ..strokeCap = StrokeCap.round;
-
-    final path = Path();
-    path.moveTo(60, 85);
-    path.cubicTo(
-      size.width * 0.3, size.height * 0.2,
-      size.width * 0.6, size.height * 0.8,
-      size.width - 60, size.height - 55,
-    );
-
-    // Dashed line
-    final dashPath = Path();
-    const dashWidth = 8.0;
-    const dashSpace = 5.0;
-    for (final metric in path.computeMetrics()) {
-      var distance = 0.0;
-      while (distance < metric.length) {
-        final end = (distance + dashWidth).clamp(0.0, metric.length);
-        dashPath.addPath(
-          metric.extractPath(distance, end),
-          Offset.zero,
-        );
-        distance += dashWidth + dashSpace;
-      }
-    }
-    canvas.drawPath(dashPath, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -11,6 +11,10 @@ class MockOrder {
   final String status;
   final DateTime createdAt;
   final String? otp;
+  final double storeLat;
+  final double storeLng;
+  final double customerLat;
+  final double customerLng;
 
   MockOrder({
     required this.id,
@@ -25,6 +29,10 @@ class MockOrder {
     required this.status,
     required this.createdAt,
     this.otp,
+    this.storeLat = 28.6139,
+    this.storeLng = 77.2090,
+    this.customerLat = 28.5502,
+    this.customerLng = 77.2082,
   });
 }
 
@@ -71,6 +79,10 @@ class MockOrders {
       status: 'active',
       createdAt: DateTime.now().subtract(const Duration(minutes: 15)),
       otp: '1234',
+      storeLat: 28.6663,
+      storeLng: 77.1570,
+      customerLat: 28.5502,
+      customerLng: 77.2060,
     ),
     MockOrder(
       id: 'ORD-10237',
